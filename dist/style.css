@@ -1,0 +1,66 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 5% 14%;
+  color: #3E3D3D;
+}
+
+.title {
+  font-family: 'Bitter', serif;
+  font-size: 20px;
+}
+
+.write {
+  text-align: right;
+}
+
+#button {
+  padding: 13px;
+  font-size: 15px;
+  background-color: #426c90;
+  color: #F4F4F4;
+  border-radius: 3px;
+  border:none;
+}
+
+.ratingAvg {
+  margin: 10px;
+  display: grid;
+  grid-template-columns: 10%;
+  grid-row-gap: 50px;
+}
+
+.p {
+  margin: 5px;
+  color: #353434;
+}
+
+#snapshot {
+  border: 1px black solid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#average {
+  border: 1px black solid;
+  grid-column-start: 3;
+  grid-column-end: 5;
+  margin-left: 10%;
+}
+
+.stars {
+  font-size: 15px;
+  margin: 20px 0 5px 12px;
+}
+
+.bar {
+  width: 220px;
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 10px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.star {
+  margin: 10px;
+}
