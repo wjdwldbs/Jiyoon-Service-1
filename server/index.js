@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.static(path.join(__dirname, '../dist')));
 
-app.get('/reviews', controller.getProductReviews);
+app.get('/api/reviews/:id', controller.getProductReviews);
+app.get('/api/reviewImg/:id', controller.getReviewImgInfo);
 
 
 app.listen(port, console.log(`listening on port ${port}`));

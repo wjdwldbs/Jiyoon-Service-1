@@ -20,6 +20,7 @@ body {
   color: #F4F4F4;
   border-radius: 3px;
   border:none;
+  cursor: pointer;
 }
 
 .ratingAvg {
@@ -48,10 +49,11 @@ body {
 .stars {
   font-size: 15px;
   margin: 20px 0 5px 0;
+  cursor: pointer;
 }
 
 #overall {
-  font-size: 20px;
+  font-size: 21px;
   color: #426c90;
   margin-left: 18px;
 }
@@ -132,7 +134,7 @@ body {
 
 #border {
   margin: 0;
-  padding: 2%;
+  padding: 20px;
   border-bottom: 1px solid #B3B3B3;
 }
 
@@ -178,9 +180,46 @@ body {
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
   background-color: #ddd;
+  cursor: pointer;
 }
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
 } 
+
+#reviewTop {
+  margin-top: 20px;
+}
+
+#userStars {
+  font-size: 21px;
+  color: #426c90;
+  margin-right: 7px;
+}
+
+.helpfulButtons {
+  padding: 8px;
+  margin: 2px;
+  font-size: 14px;
+  background-color: transparent;
+  border: 1px solid #B9B8B8;
+  border-radius: 2px;
+}
+
+.reviewImg {
+  height: 200px; 
+  width: 250px; 
+  margin: 30px;
+  cursor: pointer;
+}
+
+#clickedRevImg {
+  height: 400px;
+  width: 60%;
+}
+
+#modalContainer {
+  display: flex;
+  justify-content: center;
+}

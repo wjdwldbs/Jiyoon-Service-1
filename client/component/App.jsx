@@ -1,5 +1,6 @@
 import React from 'react';
 import Reviews from './Reviews.jsx';
+import axios from 'axios';
 class App extends React.Component{
   constructor(){
     super();
@@ -44,30 +45,10 @@ class App extends React.Component{
           </div>
 
         </div> 
-        {/* end of summary div */}
 
-        <div id="reviewNums">
-          <span id="reviews">1–8 of 53 Reviews</span>
-
-          <span id="sort">
-            <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img><span>Sort by:</span>
-
-            <div className="dropdown">
-              <button className="dropbtn">Most Relevant{`  `}
-              <i className="fa fa-caret-down"></i>
-              </button>
-              <div className="dropdown-content">
-                <a className="relevant">Most Relevant</a>
-                <a className="helpful">Most Helpful</a>
-                <a className="highest">Highest To Lowest Rating</a>
-                <a className="lowest">Lowest To Highest Rating</a>
-                <a className="recent">Most Recent</a>
-              </div>
-            </div>
-          </span>
-
-        </div> 
-        {/* <div id="border"></div> */}
+        <div>
+          <Reviews />
+        </div>
         
       </div>
       
