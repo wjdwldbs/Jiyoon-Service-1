@@ -5,6 +5,9 @@ import Modal from 'react-modal';
 
 const modalStyle = {
   content: {
+    display: 'block',
+    marginTop: '0',
+    margin: '0 auto',
     width: '60%',
     height: '65%',
     background: 'black',
@@ -23,7 +26,8 @@ class Reviews extends React.Component {
       reviews: [],
       showModal: false,
       reviewImg: '',
-      imgCaption: ''
+      imgCaption: '',
+      itemsToShow: 8
     }
 
     this.sortByRelevance = this.sortByRelevance.bind(this);
@@ -86,11 +90,21 @@ class Reviews extends React.Component {
     })
   }
 
+  showMore(){
+    if (this.state.itemsToShow === this.state.reviews.length){
+      loadMore.style.display="none"
+    } else {
+      this.setState({
+        itemsToShow: this.state.itemsToShow + 8
+      })
+    } 
+  }
+
   render(){
     return(
       <div>
       <div id="reviewNums">
-        <span id="reviews">1–8 of {this.state.reviews.length} Reviews</span>
+        <span id="reviews">1 – {this.state.itemsToShow} of {this.state.reviews.length} Reviews</span>
         <span id="sort">
           <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img><span>Sort by:</span>
           <div className="dropdown">
@@ -108,7 +122,8 @@ class Reviews extends React.Component {
         </span>
         </div> 
         <div>
-          <ReviewsList closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
+          <ReviewsList itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
+          <button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
           <div id="modalContainer">
             <img id="clickedRevImg" src={this.state.reviewImg} alt="clicked_Img"/>
