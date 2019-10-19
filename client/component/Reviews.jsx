@@ -44,6 +44,11 @@ class Reviews extends React.Component {
     this.state.reviews.sort((a, b) => b.helpful_yes - a.helpful_yes);
   }
 
+  sortByClick(e){
+    document.getElementById("currentSort").innerHTML = e.currentTarget.textContent;
+  }
+  // this.state.reviews.sort((a, b) => b.stars - a.stars);
+  
   reviewStars(rating){
     if (rating === 5){
       return '★★★★★';
@@ -62,8 +67,7 @@ class Reviews extends React.Component {
     axios.get(`/api/reviews/${id}`)
     .then((results) => {
       this.setState({
-        reviews: results.data,
-        test: true
+        reviews: results.data
       })
       this.sortByRelevance();
       console.log(this.state.reviews)
@@ -108,15 +112,15 @@ class Reviews extends React.Component {
         <span id="sort">
           <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img><span>Sort by:</span>
           <div className="dropdown">
-            <button className="dropbtn">Most Relevant{`  `}
+            <button className="dropbtn"><span id="currentSort">Most Relevant{`  `}</span>
               <i className="fa fa-caret-down"></i>
             </button>
             <div className="dropdown-content">
-              <a id="relevant">Most Relevant</a>
-              <a id="helpful">Most Helpful</a>
-              <a id="highest">Highest To Lowest Rating</a>
-              <a id="lowest">Lowest To Highest Rating</a>
-              <a id="recent">Most Recent</a>
+              <a onClick={this.sortByClick} id="relevant">Most Relevant</a>
+              <a onClick={this.sortByClick} id="helpful">Most Helpful</a>
+              <a onClick={this.sortByClick} id="highest">Highest To Lowest Rating</a>
+              <a onClick={this.sortByClick} id="lowest">Lowest To Highest Rating</a>
+              <a onClick={this.sortByClick} id="recent">Most Recent</a>
             </div>
           </div>
         </span>
