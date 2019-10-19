@@ -219,7 +219,7 @@ body {
   width: 60%;
 }
 
-#modalContainer {
+#modalPicContainer {
   display: flex;
   justify-content: center;
 }

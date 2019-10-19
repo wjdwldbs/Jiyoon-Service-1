@@ -24,30 +24,76 @@ class Reviews extends React.Component {
 
     this.state = {
       reviews: [],
+      rendered: false,
       showModal: false,
       reviewImg: '',
       imgCaption: '',
       itemsToShow: 8
     }
 
-    this.sortByRelevance = this.sortByRelevance.bind(this);
     this.reviewStars = this.reviewStars.bind(this);
     this.reviewImgClick = this.reviewImgClick.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.sortByRelevance = this.sortByRelevance.bind(this);
+    this.sortByMostHelpful = this.sortByMostHelpful.bind(this);
+    this.sortByHighestToLowest = this.sortByHighestToLowest.bind(this);
+    this.sortByLowestToHighest = this.sortByLowestToHighest.bind(this);
+    this.renderMostRelevant = this.renderMostRelevant.bind(this);
   }
 
   componentDidMount(){
     this.getItemReviews(1);
   }
 
-  sortByRelevance(){
-    this.state.reviews.sort((a, b) => b.helpful_yes - a.helpful_yes);
+  sortByRelevance(e){
+    this.sortByClick(e);
+    let reviews = this.state.reviews;
+    reviews.sort((a, b) => (b.helpful_yes + b.helpful_no) - (a.helpful_yes + a.helpful_no));
+    this.setState({
+      reviews: reviews
+    })
+  }
+
+  sortByMostHelpful(e){
+    this.sortByClick(e);
+    let reviews = this.state.reviews;
+    reviews.sort((a, b) => b.helpful_yes - a.helpful_yes);
+    this.setState({
+      reviews: reviews
+    })
+  }
+
+  sortByHighestToLowest(e){
+    this.sortByClick(e);
+    let reviews = this.state.reviews;
+    reviews.sort((a, b) => b.stars - a.stars);
+    this.setState({
+      reviews: reviews
+    })
+  }
+
+  sortByLowestToHighest(e){
+    this.sortByClick(e);
+    let reviews = this.state.reviews;
+    reviews.sort((a, b) => a.stars - b.stars);
+    this.setState({
+      reviews: reviews
+    })
   }
 
   sortByClick(e){
     document.getElementById("currentSort").innerHTML = e.currentTarget.textContent;
   }
-  // this.state.reviews.sort((a, b) => b.stars - a.stars);
+
+  renderMostRelevant(){
+    this.state.reviews.sort((a, b) => (b.helpful_yes + b.helpful_no) - (a.helpful_yes + a.helpful_no));
+    this.setState({
+      rendered: true
+    })
+  }
+
+
+  
   
   reviewStars(rating){
     if (rating === 5){
@@ -69,7 +115,7 @@ class Reviews extends React.Component {
       this.setState({
         reviews: results.data
       })
-      this.sortByRelevance();
+      this.renderMostRelevant();
       console.log(this.state.reviews)
     })
     .catch((err) => console.error(`Unsuccessful getItemReviews request: ${err}`))
@@ -116,23 +162,27 @@ class Reviews extends React.Component {
               <i className="fa fa-caret-down"></i>
             </button>
             <div className="dropdown-content">
-              <a onClick={this.sortByClick} id="relevant">Most Relevant</a>
-              <a onClick={this.sortByClick} id="helpful">Most Helpful</a>
-              <a onClick={this.sortByClick} id="highest">Highest To Lowest Rating</a>
-              <a onClick={this.sortByClick} id="lowest">Lowest To Highest Rating</a>
+              <a onClick={this.sortByRelevance} id="relevant">Most Relevant</a>
+              <a onClick={this.sortByMostHelpful} id="helpful">Most Helpful</a>
+              <a onClick={this.sortByHighestToLowest} id="highest">Highest To Lowest Rating</a>
+              <a onClick={this.sortByLowestToHighest} id="lowest">Lowest To Highest Rating</a>
               <a onClick={this.sortByClick} id="recent">Most Recent</a>
             </div>
           </div>
         </span>
         </div> 
         <div>
+          {this.state.rendered &&
           <ReviewsList itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
-          <button onClick={() => this.showMore()} id="loadMore">Load more</button>
+          }<button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
-          <div id="modalContainer">
+          <div>
+          <i onClick={this.closeModal} style={{float:"right", cursor:"pointer"}} className="fa fa-times-circle fa-lg" aria-hidden="true"></i> 
+          <div id="modalPicContainer">
             <img id="clickedRevImg" src={this.state.reviewImg} alt="clicked_Img"/>
           </div>
           <p style={{color: "white", textAlign: "center"}}>{this.state.imgCaption}</p>
+          </div>
           </Modal>
         </div>
       </div>
