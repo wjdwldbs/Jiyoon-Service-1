@@ -114,12 +114,14 @@ class Reviews extends React.Component {
   }
 
 
+
   getItemReviews(id){
     axios.get(`/api/reviews/${id}`)
     .then((results) => {
       this.setState({
         reviews: results.data
       })
+      this.props.getAverageRating(this.state.reviews);
       this.renderMostRelevant();
       console.log(this.state.reviews)
       this.props.getStars(this.state.reviews);

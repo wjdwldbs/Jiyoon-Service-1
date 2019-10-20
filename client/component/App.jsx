@@ -11,10 +11,23 @@ class App extends React.Component{
         three: null,
         two: null,
         one: null
-      }
+      },
+      averageRating: null
     }
 
   this.getStars = this.getStars.bind(this);
+  this.getAverageRating = this.getAverageRating.bind(this);
+  }
+
+  getAverageRating(reviews){
+    var averageRating = 0;
+    for (var i = 0; i < reviews.length; i++){
+      averageRating += reviews[i].stars
+    }
+    averageRating = (averageRating / reviews.length).toFixed(1);
+    this.setState({
+      averageRating: averageRating
+    })
   }
 
   getStars(reviews){
@@ -76,9 +89,9 @@ class App extends React.Component{
 
             <div id="average">
               <p>Average Customer Ratings</p>
-              <p>Overall  <span id="overall">  ★★★★☆</span><span id="score">4.0</span></p>
+              <p>Overall  <span id="overall">  ★★★★☆</span><span id="score">{this.state.averageRating}</span></p>
               <div id="fitholder">
-                <p id="fitword">Fit <li className="fit leftfit"></li><li className="fit"></li><li className="fit"></li><li className="fit"></li></p>
+                <p id="fitword">Fit <li className="fit leftfit"></li><li className="fit"></li><span id="fitIndicator"></span><li className="fit"></li><li className="fit"></li></p>
                 <p id="smallLarge"><span>Runs Small</span><span id="large">Runs Large</span></p>
               </div>
             </div>
@@ -88,7 +101,7 @@ class App extends React.Component{
         </div> 
 
         <div>
-          <Reviews getStars={this.getStars}/>
+          <Reviews getAverageRating={this.getAverageRating} getStars={this.getStars}/>
         </div>
         
       </div>
