@@ -29,7 +29,9 @@ class Reviews extends React.Component {
       imgCaption: '',
       itemsToShow: 8,
       clickedHelpfulIndex: [],
-      clickedUNhelfulIndex: []
+      clickedUNhelfulIndex: [],
+      clickedReportIndex: [],
+      reportButtonText: 'Report as inappropriate'
     }
 
     this.reviewStars = this.reviewStars.bind(this);
@@ -42,6 +44,7 @@ class Reviews extends React.Component {
     this.renderMostRelevant = this.renderMostRelevant.bind(this);
     this.incrementHelpfulReviewsCount = this.incrementHelpfulReviewsCount.bind(this);
     this.incrementUNhelpfulReviewsCount = this.incrementUNhelpfulReviewsCount.bind(this);
+    this.clickReportAsInappropriate = this.clickReportAsInappropriate.bind(this);
 
   }
 
@@ -181,6 +184,14 @@ class Reviews extends React.Component {
     .catch((err) => console.error(`Unsuccessful incrementUNhelpfulReviewsCount request: ${err}`))    
   }
 
+  clickReportAsInappropriate(index){
+    this.state.clickedReportIndex.push(index)
+    this.setState({
+      clickedReportIndex: this.state.clickedReportIndex,
+      reportButtonText: 'Reported'
+    })
+  }
+
   render(){
     return(
       <div>
@@ -208,7 +219,7 @@ class Reviews extends React.Component {
         </div> 
         <div>
           {this.state.rendered &&
-          <ReviewsList clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
+          <ReviewsList reportButtonText={this.state.reportButtonText} clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
           }<button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
           <div>

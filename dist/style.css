@@ -334,3 +334,14 @@ body {
 .redUnhelpful {
   color: red;
 }
+
+.reportButton {
+  padding: 8px;
+  margin: 2px;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  font-style: italic;
+  pointer-events: none; 
+}
