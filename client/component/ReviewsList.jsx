@@ -17,7 +17,7 @@ const ReviewsList = (props) => (
           <span>
           <button onClick={() => props.incrementHelpfulReviewsCount(i, review.id)} className={props.clickedHelpfulIndex.indexOf(i) === -1 ? 'helpfulButtons' : 'clickedHelpfulButton'}>Yes · <span className={props.clickedHelpfulIndex.indexOf(i) === -1 ? 'blackHelpful' : 'greenHelpful'}>{review.helpful_yes}</span></button>
           <button onClick={() => props.incrementUNhelpfulReviewsCount(i, review.id)} className={props.clickedUNhelfulIndex.indexOf(i) === -1 ? 'helpfulButtons' : 'clickedUNHelpfulButton'}>No · <span className={props.clickedUNhelfulIndex.indexOf(i) === -1 ? 'blackHelpful' : 'redUnhelpful'}>{review.helpful_no}</span></button>
-          <button onClick={() => props.clickReportAsInappropriate(i)} className={props.clickedReportIndex.indexOf(i) === -1 ? "helpfulButtons" : "reportButton"}>{props.reportButtonText}</button>
+          <button onClick={() => props.clickReportAsInappropriate(i)} className={props.clickedReportIndex.indexOf(i) === -1 ? "helpfulButtons" : "reportButton"}>{props.clickedReportIndex.indexOf(i) === -1 ? "Report as inappropriate" : "Reported"}</button>
           </span> 
         </div>
       </div>

@@ -30,8 +30,7 @@ class Reviews extends React.Component {
       itemsToShow: 8,
       clickedHelpfulIndex: [],
       clickedUNhelfulIndex: [],
-      clickedReportIndex: [],
-      reportButtonText: 'Report as inappropriate'
+      clickedReportIndex: []
     }
 
     this.reviewStars = this.reviewStars.bind(this);
@@ -189,8 +188,7 @@ class Reviews extends React.Component {
   clickReportAsInappropriate(index){
     this.state.clickedReportIndex.push(index)
     this.setState({
-      clickedReportIndex: this.state.clickedReportIndex,
-      reportButtonText: 'Reported'
+      clickedReportIndex: this.state.clickedReportIndex
     })
   }
 
@@ -221,7 +219,7 @@ class Reviews extends React.Component {
         </div> 
         <div>
           {this.state.rendered &&
-          <ReviewsList reportButtonText={this.state.reportButtonText} clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
+          <ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
           }<button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
           <div>
