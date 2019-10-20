@@ -23,6 +23,10 @@ body {
   cursor: pointer;
 }
 
+button {
+  outline: none;
+}
+
 .ratingAvg {
   
   display: grid;
