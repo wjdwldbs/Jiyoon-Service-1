@@ -11,8 +11,7 @@ const modalStyle = {
     width: '60%',
     height: '65%',
     background: 'black',
-    color: '#696969',
-    
+    color: '#696969'
   }
 };
 
@@ -28,7 +27,9 @@ class Reviews extends React.Component {
       showModal: false,
       reviewImg: '',
       imgCaption: '',
-      itemsToShow: 8
+      itemsToShow: 8,
+      clickedHelpfulIndex: [],
+      clickedUNhelfulIndex: []
     }
 
     this.reviewStars = this.reviewStars.bind(this);
@@ -39,6 +40,9 @@ class Reviews extends React.Component {
     this.sortByHighestToLowest = this.sortByHighestToLowest.bind(this);
     this.sortByLowestToHighest = this.sortByLowestToHighest.bind(this);
     this.renderMostRelevant = this.renderMostRelevant.bind(this);
+    this.incrementHelpfulReviewsCount = this.incrementHelpfulReviewsCount.bind(this);
+    this.incrementUNhelpfulReviewsCount = this.incrementUNhelpfulReviewsCount.bind(this);
+
   }
 
   componentDidMount(){
@@ -92,9 +96,6 @@ class Reviews extends React.Component {
     })
   }
 
-
-  
-  
   reviewStars(rating){
     if (rating === 5){
       return '★★★★★';
@@ -109,6 +110,7 @@ class Reviews extends React.Component {
     }
   }
 
+
   getItemReviews(id){
     axios.get(`/api/reviews/${id}`)
     .then((results) => {
@@ -117,6 +119,7 @@ class Reviews extends React.Component {
       })
       this.renderMostRelevant();
       console.log(this.state.reviews)
+      this.props.getStars(this.state.reviews);
     })
     .catch((err) => console.error(`Unsuccessful getItemReviews request: ${err}`))
   }
@@ -150,13 +153,45 @@ class Reviews extends React.Component {
     } 
   }
 
+  incrementHelpfulReviewsCount(index, id){
+    axios.get(`/api/helpfulReviews/${id}`)
+    .then((results) => {
+      this.state.clickedHelpfulIndex.push(index);
+      console.log(results.data);
+      this.state.reviews.splice(index, 1, results.data);
+      this.setState({
+        reviews: this.state.reviews,
+        clickedHelpfulIndex: this.state.clickedHelpfulIndex
+      })
+    })
+    .catch((err) => console.error(`Unsuccessful incrementHelpfulReviewsCount request: ${err}`))
+  }
+
+  incrementUNhelpfulReviewsCount(index, id){
+    axios.get(`/api/unhelpfulReviews/${id}`)
+    .then((results) => {
+      this.state.clickedUNhelfulIndex.push(index);
+      console.log(results.data);
+      this.state.reviews.splice(index, 1, results.data);
+      this.setState({
+        reviews: this.state.reviews,
+        clickedUNhelfulIndex: this.state.clickedUNhelfulIndex
+      })
+    })
+    .catch((err) => console.error(`Unsuccessful incrementUNhelpfulReviewsCount request: ${err}`))    
+  }
+
   render(){
     return(
       <div>
       <div id="reviewNums">
         <span id="reviews">1 – {this.state.itemsToShow} of {this.state.reviews.length} Reviews</span>
         <span id="sort">
-          <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img><span>Sort by:</span>
+          <a className="tooltip" href="">
+            <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img>
+            <span className="tooltiptext"><span style={{fontWeight: "bold"}}>Relevancy</span> sort puts the best reviews at the top. We look at things like helpfulness votes, latest reviews, pictures and other traits that readers look for in their reviews.</span>
+          </a>
+          <span>Sort by:</span>
           <div className="dropdown">
             <button className="dropbtn"><span id="currentSort">Most Relevant{`  `}</span>
               <i className="fa fa-caret-down"></i>
@@ -173,7 +208,7 @@ class Reviews extends React.Component {
         </div> 
         <div>
           {this.state.rendered &&
-          <ReviewsList itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
+          <ReviewsList clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
           }<button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
           <div>

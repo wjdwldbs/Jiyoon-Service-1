@@ -2,8 +2,49 @@ import React from 'react';
 import Reviews from './Reviews.jsx';
 import axios from 'axios';
 class App extends React.Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    this.state = {
+      stars: {
+        five: null,
+        four: null,
+        three: null,
+        two: null,
+        one: null
+      }
+    }
+
+  this.getStars = this.getStars.bind(this);
+  }
+
+  getStars(reviews){
+    var five = 0;
+    var four = 0;
+    var three = 0;
+    var two = 0;
+    var one = 0;
+    for (var i = 0; i < reviews.length; i++){
+      if (reviews[i].stars === 5){
+        five++;
+      } else if (reviews[i].stars === 4){
+        four++;
+      } else if (reviews[i].stars === 3){
+        three++;
+      } else if (reviews[i].stars === 2){
+        two++;
+      } else {
+        one++;
+      }
+    }
+    this.setState({
+      stars: {
+        five: five,
+        four: four,
+        three: three,
+        two: two,
+        one: one
+      }
+    })
   }
   
   render(){
@@ -25,11 +66,11 @@ class App extends React.Component{
               <p className="p">Rating Snapshot</p>
               <p className="p">Select a row below to filter reviews.</p>
               <div className="stars">
-              <div className="star">5 ★  <div className="barHolder"><span className="five"></span></div></div>
-              <div className="star">4 ★  <div className="barHolder"><span className="five"></span></div></div>
-              <div className="star">3 ★  <div className="barHolder"><span className="five"></span></div></div>
-              <div className="star">2 ★  <div className="barHolder"><span className="five"></span></div></div>
-              <div className="star">1 ★  <div className="barHolder"><span className="five"></span></div></div>
+              <div className="star">5 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.five}</span></div>
+              <div className="star">4 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.four}</span></div>
+              <div className="star">3 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.three}</span></div>
+              <div className="star">2 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.two}</span></div>
+              <div className="star">1 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.one}</span></div>
               </div>
             </div>
 
@@ -47,7 +88,7 @@ class App extends React.Component{
         </div> 
 
         <div>
-          <Reviews />
+          <Reviews getStars={this.getStars}/>
         </div>
         
       </div>

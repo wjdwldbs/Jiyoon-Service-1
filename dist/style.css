@@ -63,7 +63,7 @@ body {
   width: 220px;
   border: 1px solid #D0CDCD;
   height: 8px;
-  margin-left: 10px;
+  margin: 0 10px;
   border-radius: 2px;
   background-color: #F2F1F1;
 
@@ -205,6 +205,11 @@ body {
   background-color: transparent;
   border: 1px solid #B9B8B8;
   border-radius: 2px;
+  cursor: pointer;
+}
+
+.changeHelpfulStyle {
+  color: green
 }
 
 .reviewImg {
@@ -222,10 +227,6 @@ body {
 #modalPicContainer {
   display: flex;
   justify-content: center;
-}
-
-.helpfulButtons {
-  cursor: pointer;
 }
 
 .helpfulButtons:hover {
@@ -247,4 +248,89 @@ body {
 
 #loadMore:hover {
   box-shadow: inset 0 0 10px #C8C6C6;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+
+}
+
+.tooltiptext {
+  font-size: 12px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 200px;
+}
+
+ .tooltip .tooltiptext {
+  font-size: 13px;
+  line-height: 20px;
+  visibility: hidden;
+  width: 380px;
+  height: auto;
+  background-color: white;
+  color: #6A6969;
+  text-align: center;
+  border-radius: 6px;
+  padding: 20px 5px;
+  border: 1px solid gray;
+
+
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+
+  opacity: 0;
+  transition: opacity 0.5s;
+
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+} 
+
+ .tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  bottom: 100%; 
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+.clickedHelpfulButton {
+  padding: 8px;
+  margin: 2px;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  pointer-events: none;
+}
+
+.clickedUNHelpfulButton {
+  padding: 8px;
+  margin: 2px;
+  font-size: 14px;
+  background-color: transparent;
+  border: none;
+  color: black;
+  pointer-events: none; 
+}
+
+.blackHelpful{
+  color: black;
+}
+
+.greenHelpful {
+  color: green;
+}
+
+.redUnhelpful {
+  color: red;
 }
