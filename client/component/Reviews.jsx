@@ -170,6 +170,7 @@ class Reviews extends React.Component {
     axios.get(`/api/helpfulReviews/${id}`)
     .then((results) => {
       this.state.clickedHelpfulIndex.push(index);
+      this.state.clickedUNhelfulIndex.push(index);
       console.log(results.data);
       this.state.reviews.splice(index, 1, results.data);
       this.setState({
@@ -184,6 +185,7 @@ class Reviews extends React.Component {
     axios.get(`/api/unhelpfulReviews/${id}`)
     .then((results) => {
       this.state.clickedUNhelfulIndex.push(index);
+      this.state.clickedHelpfulIndex.push(index);
       console.log(results.data);
       this.state.reviews.splice(index, 1, results.data);
       this.setState({
