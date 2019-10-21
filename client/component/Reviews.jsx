@@ -44,7 +44,7 @@ class Reviews extends React.Component {
     this.incrementHelpfulReviewsCount = this.incrementHelpfulReviewsCount.bind(this);
     this.incrementUNhelpfulReviewsCount = this.incrementUNhelpfulReviewsCount.bind(this);
     this.clickReportAsInappropriate = this.clickReportAsInappropriate.bind(this);
-
+    this.sortByMostRecent = this.sortByMostRecent.bind(this);
   }
 
   componentDidMount(){
@@ -90,6 +90,15 @@ class Reviews extends React.Component {
   sortByClick(e){
     document.getElementById("currentSort").innerHTML = e.currentTarget.textContent;
   }
+
+  sortByMostRecent(e){
+    this.sortByClick(e);
+    let reviews = this.state.reviews;
+    reviews.sort((a, b) => Number(b.date) - Number(a.date));
+    this.setState({
+      reviews: reviews
+    })
+  } 
 
   renderMostRelevant(){
     this.state.reviews.sort((a, b) => (b.helpful_yes + b.helpful_no) - (a.helpful_yes + a.helpful_no));
@@ -212,7 +221,7 @@ class Reviews extends React.Component {
               <a onClick={this.sortByMostHelpful} id="helpful">Most Helpful</a>
               <a onClick={this.sortByHighestToLowest} id="highest">Highest To Lowest Rating</a>
               <a onClick={this.sortByLowestToHighest} id="lowest">Lowest To Highest Rating</a>
-              <a onClick={this.sortByClick} id="recent">Most Recent</a>
+              <a onClick={this.sortByMostRecent} id="recent">Most Recent</a>
             </div>
           </div>
         </span>

@@ -1,11 +1,12 @@
 import React from 'react';
+import moment from 'moment';
 
 const ReviewsList = (props) => (
   <div>
     {props.reviews.slice(0, props.itemsToShow).map((review, i) => (
       <div key={review.id}>
         <div id="border"></div>
-        <div id="reviewTop"><span id="userStars">{props.reviewStars(review.stars)}</span><span style={{ fontWeight: 'bold' }}>{review.username}</span><span style={{ fontSize: 14 }}> · {review.date}</span></div>
+        <div id="reviewTop"><span id="userStars">{props.reviewStars(review.stars)}</span><span style={{ fontWeight: 'bold' }}>{review.username}</span><span style={{ fontSize: 14 }}> · {moment(review.date, "YYYYMMDD").fromNow()}</span></div>
         <div style={{ fontWeight: 'bold', fontSize: 20 }}>{review.title}</div>
         <br />
         <div style={{lineHeight: "30px"}}>{review.review}</div>
