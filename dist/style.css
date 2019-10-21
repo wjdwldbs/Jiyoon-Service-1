@@ -361,3 +361,25 @@ button {
   position: absolute;
   z-index: 1;
 }
+
+@media only screen and (max-width: 900px) {
+  .barHolder {
+    width: 180px;
+  }
+  
+  .five {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #average {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin-bottom: 5%;
+  }
+
+  body {
+    margin: 30px;
+  }
+}
