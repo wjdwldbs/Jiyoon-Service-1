@@ -28,7 +28,7 @@ class Reviews extends React.Component {
       showModal: false,
       reviewImg: '',
       imgCaption: '',
-      itemsToShow: 8,
+      itemsToShow: null,
       clickedHelpfulIndex: [],
       clickedUNhelfulIndex: [],
       clickedReportIndex: [],
@@ -47,7 +47,7 @@ class Reviews extends React.Component {
     this.incrementUNhelpfulReviewsCount = this.incrementUNhelpfulReviewsCount.bind(this);
     this.clickReportAsInappropriate = this.clickReportAsInappropriate.bind(this);
     this.sortByMostRecent = this.sortByMostRecent.bind(this);
-    this.handleRatingBarClick =this.handleRatingBarClick.bind(this);
+    this.handleRatingBarButtonClick =this.handleRatingBarButtonClick.bind(this);
   }
 
 
@@ -59,7 +59,8 @@ class Reviews extends React.Component {
     if (prevProps.currentBar !== this.props.currentBar){
       this.setState({
         clickedBar: true,
-        filtered: this.state.reviews.filter((review) => review.stars === this.props.currentBar)
+        filtered: this.state.reviews.filter((review) => review.stars === this.props.currentBar),
+        itemsToShow: this.state.reviews.filter((review) => review.stars === this.props.currentBar).length
       })
     }
   }
@@ -140,7 +141,8 @@ class Reviews extends React.Component {
     axios.get(`/api/reviews/${id}`)
     .then((results) => {
       this.setState({
-        reviews: results.data
+        reviews: results.data,
+        itemsToShow: results.data.length >= 8 ? 8 : results.data.length
       })
       this.props.getAverageRating(this.state.reviews);
       this.renderMostRelevant();
@@ -174,7 +176,7 @@ class Reviews extends React.Component {
       loadMore.style.display="none"
     } else {
       this.setState({
-        itemsToShow: this.state.itemsToShow + 8
+        itemsToShow: this.state.itemsToShow + (this.state.reviews.length - this.state.itemsToShow)
       })
     } 
   }
@@ -216,7 +218,7 @@ class Reviews extends React.Component {
     })
   }
 
-  handleRatingBarClick() {
+  handleRatingBarButtonClick() {
     this.setState({
       clickedBar: false
     })
@@ -226,7 +228,7 @@ class Reviews extends React.Component {
     return(
       <div>
         <div id="reviewNums">
-          <span id="reviews">1 – {this.state.itemsToShow} of {this.state.reviews.length} Reviews</span>
+          <span id="reviews">1 – {this.state.itemsToShow} of {this.state.clickedBar ? this.state.filtered.length : this.state.reviews.length} Reviews</span>
           <span id="sort">
             <a className="tooltip" href="">
               <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img>
@@ -248,9 +250,9 @@ class Reviews extends React.Component {
           </span>
         </div> 
 
-        <div onClick={this.handleRatingBarClick} id="clickBarButtons">
-          <button id={this.state.clickedBar ? "filterStars" : "unclickedRatingBar"}><span>{this.props.currentBar}</span><span> {this.props.currentBar === 1 ? 'star' : 'stars'} </span><i style={{color: "white", cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
-          <button id={this.state.clickedBar ? "clearAll" : "unclickedRatingBar"}>Clear All <i style={{cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
+        <div id="clickBarButtons">
+          <button onClick={this.handleRatingBarButtonClick} id={this.state.clickedBar ? "filterStars" : "unclickedRatingBar"}><span>{this.props.currentBar}</span><span> {this.props.currentBar === 1 ? 'star' : 'stars'} </span><i style={{color: "white", cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
+          <button onClick={this.handleRatingBarButtonClick} id={this.state.clickedBar ? "clearAll" : "unclickedRatingBar"}>Clear All <i style={{cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
         </div>
 
         <div>
