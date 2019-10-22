@@ -70,18 +70,16 @@ button {
   margin: 0 10px;
   border-radius: 2px;
   background-color: #F2F1F1;
-  
 }
 
 .five {
   display: block;
-  width: 50%;
   border: 1px solid #D0CDCD;
   height: 9px;
-  background-color: #426c90;
   border-radius: 2px;
-  z-index: -1;
-
+  z-index: 1;
+  /* background-color: #426c90;
+  width: 50%; */
 }
 
 .star {
@@ -389,7 +387,7 @@ button {
 #clickBarButtons{
   clear: both;
   margin: 10% 10% 0 0;
-  
+
 }
 
 #filterStars {
@@ -421,3 +419,45 @@ button {
   margin: 0;
   padding: 0;
 }
+
+.full {
+  background-color: #426c90;
+  width: 100%;
+}
+.aboveNinety{
+  width: 90%;
+  background-color: #426c90;
+}
+.aboveEighty{
+  width: 80%;
+  background-color: #426c90;
+}
+.aboveSeventy{
+  width: 70%;
+  background-color: #426c90;
+}
+.aboveFifty{
+  width: 60%;
+  background-color: #426c90;
+}
+.fifty {
+  width: 50%;
+  background-color: #426c90;
+}
+.aboveForty{
+  width: 40%;
+  background-color: #426c90;
+}
+.aboveThirty {
+  width: 30%;
+  background-color: #426c90;
+}
+.aboveTwenty{
+  width: 20%;
+  background-color: #426c90;
+}
+.aboveTen {
+  width: 10%;
+  background-color: #426c90;
+}
+

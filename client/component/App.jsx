@@ -1,6 +1,6 @@
 import React from 'react';
 import Reviews from './Reviews.jsx';
-import axios from 'axios';
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -12,6 +12,7 @@ class App extends React.Component{
         two: null,
         one: null
       },
+      reviewsLength: null,
       averageRating: null,
       currentBar: null
     }
@@ -19,10 +20,36 @@ class App extends React.Component{
   this.getStars = this.getStars.bind(this);
   this.getAverageRating = this.getAverageRating.bind(this);
   this.handleRatingBarClick = this.handleRatingBarClick.bind(this);
+  this.barStyleClass = this.barStyleClass.bind(this);
+  }
+
+  barStyleClass(stars){
+    if(stars / this.state.reviewsLength === 1){
+      return "five full";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.9) && (Number(stars / this.state.reviewsLength).toFixed(1) < 1)){
+      return "five aboveNinety";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.8) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.9)){
+      return "five aboveEighty";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.7) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.8)){
+      return "five aboveSeventy";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) > 0.5) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.7)){
+      return "five aboveFifty";
+    } else if (stars / this.state.reviewsLength === 0.5){
+      return "five fifty";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.4) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.5)){
+      return "five aboveForty";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.3) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.4)){
+      return "five aboveThirty";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) >= 0.2) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.3)){
+      return "five aboveTwenty";
+    } else if ((Number(stars / this.state.reviewsLength).toFixed(1) > 0) && (Number(stars / this.state.reviewsLength).toFixed(1) < 0.2)){
+      return "five aboveTen";
+    } else {
+      return "five";
+    }
   }
 
   handleRatingBarClick(e){
-
     let currentBar;
     if (e.currentTarget.id === "five"){
       currentBar = 5;
@@ -78,7 +105,8 @@ class App extends React.Component{
         three: three,
         two: two,
         one: one
-      }
+      },
+      reviewsLength: five + four + three + two + one
     })
   }
   
@@ -101,11 +129,11 @@ class App extends React.Component{
               <p className="p">Rating Snapshot</p>
               <p className="p">Select a row below to filter reviews.</p>
               <div className="stars">
-              <div onClick={this.handleRatingBarClick} id="five"  className="star">5 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.five}</span></div>
-              <div onClick={this.handleRatingBarClick} id="four" className="star">4 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.four}</span></div>
-              <div onClick={this.handleRatingBarClick} id="three" className="star">3 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.three}</span></div>
-              <div onClick={this.handleRatingBarClick} id="two" className="star">2 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.two}</span></div>
-              <div className="star">1 ★  <div className="barHolder"><span onClick={this.handleRatingBarClick} id="one" className="five"></span></div><span>{this.state.stars.one}</span></div>
+              <div onClick={this.handleRatingBarClick} id="five"  className="star">5 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.five)}></span></div><span>{this.state.stars.five}</span></div>
+              <div onClick={this.handleRatingBarClick} id="four" className="star">4 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.four)}></span></div><span>{this.state.stars.four}</span></div>
+              <div onClick={this.handleRatingBarClick} id="three" className="star">3 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.three)}></span></div><span>{this.state.stars.three}</span></div>
+              <div onClick={this.handleRatingBarClick} id="two" className="star">2 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.two)}></span></div><span>{this.state.stars.two}</span></div>
+              <div className="star">1 ★  <div className="barHolder"><span onClick={this.handleRatingBarClick} id="one" className={this.barStyleClass(this.state.stars.one)}></span></div><span>{this.state.stars.one}</span></div>
               </div>
             </div>
 
