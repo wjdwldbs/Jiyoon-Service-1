@@ -70,16 +70,18 @@ button {
   margin: 0 10px;
   border-radius: 2px;
   background-color: #F2F1F1;
+  
 }
 
 .five {
-  margin-top: 0;
   display: block;
-  width: 150px;
+  width: 50%;
   border: 1px solid #D0CDCD;
-  height: 8px;
+  height: 9px;
   background-color: #426c90;
   border-radius: 2px;
+  z-index: -1;
+
 }
 
 .star {
@@ -137,7 +139,7 @@ button {
 
 #border {
   margin: 0;
-  padding: 20px;
+  padding: 5px;
   border-bottom: 1px solid #B3B3B3;
 }
 
@@ -382,4 +384,39 @@ button {
   body {
     margin: 30px;
   }
+}
+
+#clickBarButtons{
+  clear: both;
+  margin: 10% 10% 0 0;
+}
+
+#filterStars {
+  padding: 13px;
+  margin-right: 10px;
+  width: auto;
+  font-size: 15px;
+  background-color: #426c90;
+  color: #F4F4F4;
+  border-radius: 3px;
+  border:none;
+  cursor: pointer;
+}
+
+#clearAll {
+  padding: 13px;
+  margin-right: 10px;
+  width: auto;
+  font-size: 15px;
+  /* background-color: #3E3D3D; */
+  color: #3E3D3D;
+  border-radius: 3px;
+  border: 1px solid #D7D6D6;
+  cursor: pointer;
+}
+
+#unclickedRatingBar {
+  display: none;
+  margin: 0;
+  padding: 0;
 }

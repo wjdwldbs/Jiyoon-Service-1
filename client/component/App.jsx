@@ -12,11 +12,33 @@ class App extends React.Component{
         two: null,
         one: null
       },
-      averageRating: null
+      averageRating: null,
+      currentBar: null
     }
 
   this.getStars = this.getStars.bind(this);
   this.getAverageRating = this.getAverageRating.bind(this);
+  this.handleRatingBarClick = this.handleRatingBarClick.bind(this);
+  }
+
+  handleRatingBarClick(e){
+
+    let currentBar;
+    if (e.currentTarget.id === "five"){
+      currentBar = 5;
+    } else if (e.currentTarget.id === "four"){
+      currentBar = 4;
+    } else if (e.currentTarget.id === "three"){
+      currentBar = 3;
+    } else if (e.currentTarget.id === "two"){
+      currentBar = 2;
+    } else {
+      currentBar = 1;
+    }
+    this.setState({
+      currentBar: currentBar
+    })
+    console.log(this.state.currentBar)
   }
 
   getAverageRating(reviews){
@@ -79,11 +101,11 @@ class App extends React.Component{
               <p className="p">Rating Snapshot</p>
               <p className="p">Select a row below to filter reviews.</p>
               <div className="stars">
-              <div className="star">5 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.five}</span></div>
-              <div className="star">4 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.four}</span></div>
-              <div className="star">3 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.three}</span></div>
-              <div className="star">2 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.two}</span></div>
-              <div className="star">1 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.one}</span></div>
+              <div onClick={this.handleRatingBarClick} id="five"  className="star">5 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.five}</span></div>
+              <div onClick={this.handleRatingBarClick} id="four" className="star">4 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.four}</span></div>
+              <div onClick={this.handleRatingBarClick} id="three" className="star">3 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.three}</span></div>
+              <div onClick={this.handleRatingBarClick} id="two" className="star">2 ★  <div className="barHolder"><span className="five"></span></div><span>{this.state.stars.two}</span></div>
+              <div className="star">1 ★  <div className="barHolder"><span onClick={this.handleRatingBarClick} id="one" className="five"></span></div><span>{this.state.stars.one}</span></div>
               </div>
             </div>
 
@@ -101,7 +123,7 @@ class App extends React.Component{
         </div> 
 
         <div>
-          <Reviews getAverageRating={this.getAverageRating} getStars={this.getStars}/>
+          <Reviews currentBar={this.state.currentBar} getAverageRating={this.getAverageRating} getStars={this.getStars}/>
         </div>
         
       </div>

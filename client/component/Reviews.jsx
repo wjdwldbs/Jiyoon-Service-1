@@ -23,6 +23,7 @@ class Reviews extends React.Component {
 
     this.state = {
       reviews: [],
+      filtered: [],
       rendered: false,
       showModal: false,
       reviewImg: '',
@@ -30,7 +31,8 @@ class Reviews extends React.Component {
       itemsToShow: 8,
       clickedHelpfulIndex: [],
       clickedUNhelfulIndex: [],
-      clickedReportIndex: []
+      clickedReportIndex: [],
+      clickedBar: false
     }
 
     this.reviewStars = this.reviewStars.bind(this);
@@ -45,10 +47,21 @@ class Reviews extends React.Component {
     this.incrementUNhelpfulReviewsCount = this.incrementUNhelpfulReviewsCount.bind(this);
     this.clickReportAsInappropriate = this.clickReportAsInappropriate.bind(this);
     this.sortByMostRecent = this.sortByMostRecent.bind(this);
+    this.handleRatingBarClick =this.handleRatingBarClick.bind(this);
   }
+
 
   componentDidMount(){
     this.getItemReviews(1);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentBar !== this.props.currentBar){
+      this.setState({
+        clickedBar: true,
+        filtered: this.state.reviews.filter((review) => review.stars === this.props.currentBar)
+      })
+    }
   }
 
   sortByRelevance(e){
@@ -203,35 +216,48 @@ class Reviews extends React.Component {
     })
   }
 
+  handleRatingBarClick() {
+    this.setState({
+      clickedBar: false
+    })
+  }
+
   render(){
     return(
       <div>
-      <div id="reviewNums">
-        <span id="reviews">1 – {this.state.itemsToShow} of {this.state.reviews.length} Reviews</span>
-        <span id="sort">
-          <a className="tooltip" href="">
-            <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img>
-            <span className="tooltiptext"><span style={{fontWeight: "bold"}}>Relevancy</span> sort puts the best reviews at the top. We look at things like helpfulness votes, latest reviews, pictures and other traits that readers look for in their reviews.</span>
-          </a>
-          <span>Sort by:</span>
-          <div className="dropdown">
-            <button className="dropbtn"><span id="currentSort">Most Relevant{`  `}</span>
-              <i className="fa fa-caret-down"></i>
-            </button>
-            <div className="dropdown-content">
-              <a onClick={this.sortByRelevance} id="relevant">Most Relevant</a>
-              <a onClick={this.sortByMostHelpful} id="helpful">Most Helpful</a>
-              <a onClick={this.sortByHighestToLowest} id="highest">Highest To Lowest Rating</a>
-              <a onClick={this.sortByLowestToHighest} id="lowest">Lowest To Highest Rating</a>
-              <a onClick={this.sortByMostRecent} id="recent">Most Recent</a>
+        <div id="reviewNums">
+          <span id="reviews">1 – {this.state.itemsToShow} of {this.state.reviews.length} Reviews</span>
+          <span id="sort">
+            <a className="tooltip" href="">
+              <img id="q" src="https://img.icons8.com/material-sharp/24/000000/help.png"></img>
+              <span className="tooltiptext"><span style={{fontWeight: "bold"}}>Relevancy</span> sort puts the best reviews at the top. We look at things like helpfulness votes, latest reviews, pictures and other traits that readers look for in their reviews.</span>
+            </a>
+            <span>Sort by:</span>
+            <div className="dropdown">
+              <button className="dropbtn"><span id="currentSort">Most Relevant{`  `}</span>
+                <i className="fa fa-caret-down"></i>
+              </button>
+              <div className="dropdown-content">
+                <a onClick={this.sortByRelevance} id="relevant">Most Relevant</a>
+                <a onClick={this.sortByMostHelpful} id="helpful">Most Helpful</a>
+                <a onClick={this.sortByHighestToLowest} id="highest">Highest To Lowest Rating</a>
+                <a onClick={this.sortByLowestToHighest} id="lowest">Lowest To Highest Rating</a>
+                <a onClick={this.sortByMostRecent} id="recent">Most Recent</a>
+              </div>
             </div>
-          </div>
-        </span>
+          </span>
         </div> 
+
+        <div onClick={this.handleRatingBarClick} id="clickBarButtons">
+          <button id={this.state.clickedBar ? "filterStars" : "unclickedRatingBar"}><span>{this.props.currentBar}</span><span> {this.props.currentBar === 1 ? 'star' : 'stars'} </span><i style={{color: "white", cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
+          <button id={this.state.clickedBar ? "clearAll" : "unclickedRatingBar"}>Clear All <i style={{cursor:"pointer"}} className="fa fa-times-circle" aria-hidden="true"></i></button>
+        </div>
+
         <div>
-          {this.state.rendered &&
-          <ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>
-          }<button onClick={() => this.showMore()} id="loadMore">Load more</button>
+          {this.state.rendered && this.state.clickedBar ? 
+          (<ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.filtered}/>)
+           : (<ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>)}
+          <button onClick={() => this.showMore()} id="loadMore">Load more</button>
           <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
           <div>
           <i onClick={this.closeModal} style={{float:"right", cursor:"pointer"}} className="fa fa-times-circle fa-lg" aria-hidden="true"></i> 

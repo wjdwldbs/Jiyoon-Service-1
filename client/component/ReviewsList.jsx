@@ -13,7 +13,7 @@ const ReviewsList = (props) => (
         <br />
         <div>{review.recommend ? <span style={{fontWeight: "bold", fontSize: "15px"}}><i className="fa fa-check-circle" aria-hidden="true"></i> Yes, I recommend this product.</span> : <span style={{fontWeight: "bold", fontSize: "15px"}}><i className="fa fa-times-circle" aria-hidden="true"></i> No, I don't recommend this product.</span>}</div>
         {review.img ? <img onClick={() => props.reviewImgClick(review.id)} className="reviewImg" src={review.img} alt="user_review_photo"/> : <p />}
-        
+      
         <div>Helpful?{' '}
           <span>
           <button onClick={() => props.incrementHelpfulReviewsCount(i, review.id)} className={props.clickedHelpfulIndex.indexOf(i) === -1 ? 'helpfulButtons' : 'clickedHelpfulButton'}>Yes · <span className={props.clickedHelpfulIndex.indexOf(i) === -1 ? 'blackHelpful' : 'greenHelpful'}>{review.helpful_yes}</span></button>
