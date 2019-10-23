@@ -159,8 +159,8 @@ button {
   color: #3E3D3D;
   padding: 14px 5px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
-  margin: 0; /* Important for vertical align on mobile phones */
+  font-family: inherit; 
+  margin: 0;
 }
 
 /* Dropdown content (hidden by default) */
@@ -197,12 +197,6 @@ button {
 #reviewTop {
   margin-top: 20px;
 }
-
-/* #userStars {
-  font-size: 21px;
-  color: #426c90;
-
-} */
 
 .helpfulButtons {
   padding: 8px;
@@ -260,7 +254,6 @@ button {
   position: relative;
   display: inline-block;
 
-
 }
 
 .tooltiptext {
@@ -292,6 +285,7 @@ button {
   opacity: 0;
   transition: opacity 0.5s;
 
+  transform: translateX(-125px);
 }
 
 .tooltip:hover .tooltiptext {
@@ -463,12 +457,6 @@ button {
   width: 10%;
   background-color: #426c90;
 }
-/* .grayStar{
-  color: #BEBEBE;
-  font-size: 20px;
-  margin-right: 7px;
-} */
-
 #fitholder {
   margin-bottom: 10px;
 }

@@ -121,7 +121,6 @@ class Reviews extends React.Component {
       rendered: true
     })
   }
-  // <span style={{marginRight: "7px"}}><span id="userStars">★★★★★</span></span>
 
   reviewStars(rating){
     if (rating === 5){
