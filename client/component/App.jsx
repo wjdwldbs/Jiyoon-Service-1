@@ -133,7 +133,7 @@ class App extends React.Component{
               <div onClick={this.handleRatingBarClick} id="four" className="star">4 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.four)}></span></div><span>{this.state.stars.four}</span></div>
               <div onClick={this.handleRatingBarClick} id="three" className="star">3 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.three)}></span></div><span>{this.state.stars.three}</span></div>
               <div onClick={this.handleRatingBarClick} id="two" className="star">2 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.two)}></span></div><span>{this.state.stars.two}</span></div>
-              <div className="star">1 ★  <div className="barHolder"><span onClick={this.handleRatingBarClick} id="one" className={this.barStyleClass(this.state.stars.one)}></span></div><span>{this.state.stars.one}</span></div>
+              <div onClick={this.handleRatingBarClick} id="one" className="star">1 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.one)}></span></div><span>{this.state.stars.one}</span></div>
               </div>
             </div>
 
