@@ -57,9 +57,11 @@ button {
 }
 
 #overall {
-  font-size: 21px;
-  color: #426c90;
-  margin-left: 18px;
+  margin-top: 15px;
+}
+
+#overallText{
+  margin-right: 20px;
 }
 
 .barHolder {
@@ -196,11 +198,11 @@ button {
   margin-top: 20px;
 }
 
-#userStars {
+/* #userStars {
   font-size: 21px;
   color: #426c90;
 
-}
+} */
 
 .helpfulButtons {
   padding: 8px;
@@ -461,8 +463,12 @@ button {
   width: 10%;
   background-color: #426c90;
 }
-.grayStar{
+/* .grayStar{
   color: #BEBEBE;
-  font-size: 21px;
+  font-size: 20px;
   margin-right: 7px;
+} */
+
+#fitholder {
+  margin-bottom: 10px;
 }

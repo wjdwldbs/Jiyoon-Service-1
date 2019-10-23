@@ -1,6 +1,7 @@
 import React from 'react';
 import Reviews from './Reviews.jsx';
-//
+import StarRatings from 'react-star-ratings';
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -73,7 +74,7 @@ class App extends React.Component{
     for (var i = 0; i < reviews.length; i++){
       averageRating += reviews[i].stars
     }
-    averageRating = (averageRating / reviews.length).toFixed(1);
+    averageRating = Number((averageRating / reviews.length).toFixed(1));
     this.setState({
       averageRating: averageRating
     })
@@ -138,8 +139,8 @@ class App extends React.Component{
             </div>
 
             <div id="average">
-              <p>Average Customer Ratings</p>
-              <p>Overall  <span id="overall">  ★★★★</span><span className="grayStar">★</span><span id="score">{this.state.averageRating}</span></p>
+              <span>Average Customer Ratings</span>
+              <div id="overall"><span id="overallText">Overall</span>{this.state.averageRating && <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={this.state.averageRating} />}<span id="score">{this.state.averageRating}</span></div>
               <div id="fitholder">
                 <p id="fitword">Fit <li className="fit leftfit"></li><li className="fit"></li><span id="fitIndicator"></span><li className="fit"></li><li className="fit"></li></p>
                 <p id="smallLarge"><span>Runs Small</span><span id="large">Runs Large</span></p>

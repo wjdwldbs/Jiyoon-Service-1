@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import ReviewsList from './ReviewsList.jsx';
 import Modal from 'react-modal';
+import StarRatings from 'react-star-ratings';
 
 const modalStyle = {
   content: {
@@ -120,18 +121,19 @@ class Reviews extends React.Component {
       rendered: true
     })
   }
+  // <span style={{marginRight: "7px"}}><span id="userStars">★★★★★</span></span>
 
   reviewStars(rating){
     if (rating === 5){
-      return <span style={{marginRight: "7px"}}><span id="userStars">★★★★★</span></span>;
+      return <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={5} />;
     } else if (rating === 4){
-      return <span><span id="userStars">★★★★</span><span className="grayStar">★</span></span>;
+      return <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={4} />;
     } else if (rating === 3) {
-      return <span><span id="userStars">★★★</span><span className="grayStar">★★</span></span>;
+      return <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={3} />;
     } else if (rating === 2) {
-      return <span><span id="userStars">★★</span><span className="grayStar">★★★</span></span>;
+      return <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={2} />;
     } else {
-      return <span><span id="userStars">★</span><span className="grayStar">★★★★</span></span>;
+      return <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={1} />;
     }
   }
 
