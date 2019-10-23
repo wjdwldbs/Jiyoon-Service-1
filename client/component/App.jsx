@@ -1,6 +1,6 @@
 import React from 'react';
 import Reviews from './Reviews.jsx';
-
+//
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -129,7 +129,7 @@ class App extends React.Component{
               <p className="p">Rating Snapshot</p>
               <p className="p">Select a row below to filter reviews.</p>
               <div className="stars">
-              <div onClick={this.handleRatingBarClick} id="five"  className="star">5 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.five)}></span></div><span>{this.state.stars.five}</span></div>
+              <div onClick={this.handleRatingBarClick} id="five"  className="star">5 ★ <div className="barHolder"><span className={this.barStyleClass(this.state.stars.five)}></span></div><span>{this.state.stars.five}</span></div>
               <div onClick={this.handleRatingBarClick} id="four" className="star">4 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.four)}></span></div><span>{this.state.stars.four}</span></div>
               <div onClick={this.handleRatingBarClick} id="three" className="star">3 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.three)}></span></div><span>{this.state.stars.three}</span></div>
               <div onClick={this.handleRatingBarClick} id="two" className="star">2 ★  <div className="barHolder"><span className={this.barStyleClass(this.state.stars.two)}></span></div><span>{this.state.stars.two}</span></div>
@@ -139,7 +139,7 @@ class App extends React.Component{
 
             <div id="average">
               <p>Average Customer Ratings</p>
-              <p>Overall  <span id="overall">  ★★★★☆</span><span id="score">{this.state.averageRating}</span></p>
+              <p>Overall  <span id="overall">  ★★★★</span><span className="grayStar">★</span><span id="score">{this.state.averageRating}</span></p>
               <div id="fitholder">
                 <p id="fitword">Fit <li className="fit leftfit"></li><li className="fit"></li><span id="fitIndicator"></span><li className="fit"></li><li className="fit"></li></p>
                 <p id="smallLarge"><span>Runs Small</span><span id="large">Runs Large</span></p>

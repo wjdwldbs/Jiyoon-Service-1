@@ -199,7 +199,7 @@ button {
 #userStars {
   font-size: 21px;
   color: #426c90;
-  margin-right: 7px;
+
 }
 
 .helpfulButtons {
@@ -461,4 +461,8 @@ button {
   width: 10%;
   background-color: #426c90;
 }
-
+.grayStar{
+  color: #BEBEBE;
+  font-size: 21px;
+  margin-right: 7px;
+}

@@ -123,15 +123,15 @@ class Reviews extends React.Component {
 
   reviewStars(rating){
     if (rating === 5){
-      return '★★★★★';
+      return <span style={{marginRight: "7px"}}><span id="userStars">★★★★★</span></span>;
     } else if (rating === 4){
-      return '★★★★☆';
+      return <span><span id="userStars">★★★★</span><span className="grayStar">★</span></span>;
     } else if (rating === 3) {
-      return '★★★☆☆';
+      return <span><span id="userStars">★★★</span><span className="grayStar">★★</span></span>;
     } else if (rating === 2) {
-      return '★★☆☆☆';
+      return <span><span id="userStars">★★</span><span className="grayStar">★★★</span></span>;
     } else {
-      return '★☆☆☆☆';
+      return <span><span id="userStars">★</span><span className="grayStar">★★★★</span></span>;
     }
   }
 
