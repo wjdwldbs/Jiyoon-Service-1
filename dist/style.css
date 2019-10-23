@@ -21,6 +21,7 @@ body {
   border-radius: 3px;
   border:none;
   cursor: pointer;
+  background-image: linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
 }
 
 button {
@@ -100,6 +101,7 @@ button {
   height: 8px;
   border: 1px solid #D0CDCD;
   list-style-type: none;
+  z-index: -1;
 }
 
 .leftfit {
@@ -356,7 +358,7 @@ button {
   background-color: #426c90;
   border-radius: 2px;
   position: absolute;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 @media only screen and (max-width: 900px) {

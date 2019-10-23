@@ -221,7 +221,8 @@ class Reviews extends React.Component {
 
   handleRatingBarButtonClick() {
     this.setState({
-      clickedBar: false
+      clickedBar: false,
+      itemsToShow: this.state.reviews.length >= 8 ? 8 : this.state.reviews.length
     })
   }
 
