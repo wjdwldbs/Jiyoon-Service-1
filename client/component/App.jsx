@@ -22,6 +22,7 @@ class App extends React.Component{
   this.getAverageRating = this.getAverageRating.bind(this);
   this.handleRatingBarClick = this.handleRatingBarClick.bind(this);
   this.barStyleClass = this.barStyleClass.bind(this);
+
   }
 
   barStyleClass(stars){
@@ -113,7 +114,7 @@ class App extends React.Component{
   
   render(){
     return(
-      <div>
+      <div id="body">
         <div className="title">
         <p>Reviews</p>
         </div>
@@ -141,7 +142,7 @@ class App extends React.Component{
             <div id="average">
               <span>Average Customer Ratings</span>
               <div id="overall"><span id="overallText">Overall</span>{this.state.averageRating && <StarRatings starEmptyColor="#BEBEBE" starRatedColor="#426c90" starSpacing="0" starDimension="20px" rating={this.state.averageRating} />}<span id="score">{this.state.averageRating}</span></div>
-              <div id="fitholder">
+              <div id="fitholder" style={{marginBottom: '10px'}}>
                 <p id="fitword">Fit <li className="fit leftfit"></li><li className="fit"></li><span id="fitIndicator"></span><li className="fit"></li><li className="fit"></li></p>
                 <p id="smallLarge"><span>Runs Small</span><span id="large">Runs Large</span></p>
               </div>

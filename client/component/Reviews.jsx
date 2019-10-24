@@ -262,7 +262,7 @@ class Reviews extends React.Component {
           (<ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.filtered}/>)
            : (<ReviewsList clickedReportIndex={this.state.clickedReportIndex} clickReportAsInappropriate={this.clickReportAsInappropriate} clickedUNhelfulIndex={this.state.clickedUNhelfulIndex} clickedHelpfulIndex={this.state.clickedHelpfulIndex} incrementUNhelpfulReviewsCount={this.incrementUNhelpfulReviewsCount} incrementHelpfulReviewsCount={this.incrementHelpfulReviewsCount} itemsToShow={this.state.itemsToShow} closeModal={this.closeModal} reviewImgClick={this.reviewImgClick} reviewStars={this.reviewStars} reviews={this.state.reviews}/>)}
           <button onClick={() => this.showMore()} id="loadMore">Load more</button>
-          <Modal isOpen={this.state.showModal} onRequestClose={this.closeModal} style={modalStyle}>
+          <Modal style={modalStyle} isOpen={this.state.showModal} onRequestClose={this.closeModal}>
           <div>
           <i onClick={this.closeModal} style={{float:"right", cursor:"pointer"}} className="fa fa-times-circle fa-lg" aria-hidden="true"></i> 
           <div id="modalPicContainer">

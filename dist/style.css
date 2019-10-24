@@ -1,6 +1,6 @@
-body {
+#body {
   font-family: 'Roboto', sans-serif;
-  margin: 5% 14%;
+  margin: 5% 12%;
   color: #3E3D3D;
 }
 
@@ -217,7 +217,7 @@ button {
 .reviewImg {
   height: 200px; 
   width: 250px; 
-  margin: 30px;
+  margin: 30px 30px 30px 0;
   cursor: pointer;
 }
 
@@ -358,7 +358,6 @@ button {
   background-color: #426c90;
   border-radius: 2px;
   position: absolute;
-  /* z-index: 1; */
 }
 
 @media only screen and (max-width: 900px) {
@@ -378,7 +377,7 @@ button {
     margin-bottom: 5%;
   }
 
-  body {
+  #body {
     margin: 30px;
   }
 }
@@ -406,7 +405,6 @@ button {
   margin-right: 10px;
   width: auto;
   font-size: 15px;
-  /* background-color: #3E3D3D; */
   color: #3E3D3D;
   border-radius: 3px;
   border: 1px solid #D7D6D6;
@@ -459,6 +457,20 @@ button {
   width: 10%;
   background-color: #426c90;
 }
-#fitholder {
-  margin-bottom: 10px;
+
+.reviewFit{
+  float: right;
+  top: 50%;
+  margin-right: 5%;
+  padding: 10% 0;
+}
+
+.reviewFitHolder{
+  margin: 0 auto;
+  display: inline-block;
+  width: 70px;
+  height: 8px;
+  border: 1px solid #D0CDCD;
+  list-style-type: none;
+  z-index: -1;
 }

@@ -90,7 +90,7 @@ REI.insertMany([{
   email: "HKYwill@gmail.com",
   location: "New York, NY",
   purchaseLocation: 1,
-  fit: 3,
+  fit: 1,
   helpful_yes: 20,
   helpful_no: 6,
   appropriate: false
@@ -110,7 +110,7 @@ REI.insertMany([{
   email: "LGGO@yahoo.com",
   location: "White Plains, NY",
   purchaseLocation: 1,
-  fit: 3,
+  fit: 1,
   helpful_yes: 10,
   helpful_no: 1,
   appropriate: false
@@ -210,7 +210,7 @@ REI.insertMany([{
   email: "el_pasajero@gmail.com",
   location: "Chicago, IL",
   purchaseLocation: 2,
-  fit: 3,
+  fit: 2,
   helpful_yes: 15,
   helpful_no: 2,
   appropriate: false
@@ -230,7 +230,7 @@ REI.insertMany([{
   email: "marinesoup@gmail.com",
   location: "Houston, TX",
   purchaseLocation: 1,
-  fit: 3,
+  fit: 2,
   helpful_yes: 40,
   helpful_no: 9,
   appropriate: false
@@ -270,7 +270,7 @@ REI.insertMany([{
   email: "brandongur@gmail.com",
   location: "San Diego, CA",
   purchaseLocation: 2,
-  fit: 3,
+  fit: 4,
   helpful_yes: 41,
   helpful_no: 5,
   appropriate: false
@@ -290,7 +290,7 @@ REI.insertMany([{
   email: "Neil_Provo@gmail.com",
   location: "San Antonio, TX",
   purchaseLocation: 1,
-  fit: 3,
+  fit: 4,
   helpful_yes: 30,
   helpful_no: 1,
   appropriate: false
