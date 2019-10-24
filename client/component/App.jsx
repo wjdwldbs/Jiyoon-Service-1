@@ -1,6 +1,7 @@
 import React from 'react';
 import Reviews from './Reviews.jsx';
 import StarRatings from 'react-star-ratings';
+import ModalBox from './ModalBox.jsx';
 
 class App extends React.Component{
   constructor(props){
@@ -15,14 +16,18 @@ class App extends React.Component{
       },
       reviewsLength: null,
       averageRating: null,
-      currentBar: null
+      currentBar: null,
+      clickedWriteReview: false,
+      item:"Men's Rainier Rain Jacket",
+      seller:"REI Co-Op - REI Co-op",
+      imgurl:"https://reiimages.s3-us-west-1.amazonaws.com/modalBoxImg/modalBoxImg.jpeg",
+      fit: true
     }
 
   this.getStars = this.getStars.bind(this);
   this.getAverageRating = this.getAverageRating.bind(this);
   this.handleRatingBarClick = this.handleRatingBarClick.bind(this);
   this.barStyleClass = this.barStyleClass.bind(this);
-
   }
 
   barStyleClass(stars){
@@ -49,6 +54,12 @@ class App extends React.Component{
     } else {
       return "five";
     }
+  }
+
+    openModal(e){
+      e.preventDefault();
+      document.getElementById("FOREST-curtain").style.display = "block";
+      document.getElementById("FOREST-modal").style.display = "block";
   }
 
   handleRatingBarClick(e){
@@ -118,15 +129,22 @@ class App extends React.Component{
         <div className="title">
         <p>Reviews</p>
         </div>
+        
+        <div id="FOREST-curtain"/>
+          <div id="FOREST-modal">
+          <div id="FOREST-sidebar">
+            <img id="FOREST-itemImg" src={this.state.imgurl} />
+            <p id="FOREST-itemInfo" className="FORESTGLOBAL-p">{this.state.seller+" - "+this.state.item}</p>
+          </div>
+          <ModalBox item={this.state.item} fit={this.state.fit}/>
+        </div>
 
         <div className="write">
-          <button id="button">Write a review</button>
+        <button id="FOREST-open"  className="FORESTGLOBAL-button" onClick={this.openModal.bind(this)}>Write a review</button>
         </div>
 
         <div className="summary">
-
           <div className="ratingAvg">
-
             <div id="snapshot">
               <p className="p">Rating Snapshot</p>
               <p className="p">Select a row below to filter reviews.</p>
@@ -147,9 +165,7 @@ class App extends React.Component{
                 <p id="smallLarge"><span>Runs Small</span><span id="large">Runs Large</span></p>
               </div>
             </div>
-
           </div>
-
         </div> 
 
         <div>

@@ -16,6 +16,10 @@ module.exports = {
         query: {
           presets: ['react', 'env']
        }
+      },
+      {
+        　test: /\.(svg)$/,
+      　　loader: 'url-loader?limit=8192&name=assets/[hash:8].[name].[ext]'
       }
     ]
   }

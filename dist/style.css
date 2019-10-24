@@ -13,17 +13,6 @@
   text-align: right;
 }
 
-#button {
-  padding: 13px;
-  font-size: 15px;
-  background-color: #426c90;
-  color: #F4F4F4;
-  border-radius: 3px;
-  border:none;
-  cursor: pointer;
-  background-image: linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
-}
-
 button {
   outline: none;
 }

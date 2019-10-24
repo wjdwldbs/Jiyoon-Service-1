@@ -1,0 +1,423 @@
+@font-face {
+  font-family: "titles";
+  src: url("../dist/ClarendonLight.ttf");
+}
+.FOREST-box,
+.FOREST-left,
+.FOREST-right {
+  margin: 0;
+  border: 0;
+}
+.FORESTGLOBAL-p,
+.FORESTGLOBAL-h3 {
+  margin: 0;
+}
+.FOREST-shorttitle {
+  display: inline-block;
+  line-height: 32px;
+}
+.FORESTGLOBAL-button:focus,
+.FORESTGLOBAL-select:focus {
+  outline: none;
+}
+.FORESTGLOBAL-input,
+.FORESTGLOBAL-textarea,
+.FORESTGLOBAL-select,
+#FOREST-reviewcontainer {
+  background-color: white;
+  width: 100%;
+  padding: 7px 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-top-color: #aaa;
+  border-radius: 4px;
+  /* how do they show the resizing mark without activating it? */
+}
+.FORESTGLOBAL-input:hover,
+.FORESTGLOBAL-input:focus,
+.FORESTGLOBAL-textarea:hover,
+.FORESTGLOBAL-textarea:focus {
+  border-color: black;
+  outline: none;
+}
+.FORESTGLOBAL-select {
+  margin-top: -5px;
+  padding-left: 6px;
+  font-size: 16px;
+  border-top-color: #ccc;
+  border-bottom-color: black;
+  width: 80%;
+}
+.FORESTGLOBAL-select:hover {
+  border-top-color: black;
+  border-bottom-color: #ccc;
+  border-right-color: #aaa;
+  border-left-color: #999;
+}
+.FORESTGLOBAL-textarea {
+  resize: vertical;
+  line-height: 23px;
+}
+
+#FOREST-header,
+#FOREST-rating,
+#FOREST-recommend,
+#FOREST-email,
+#FOREST-fit,
+#FOREST-read,
+#FOREST-where,
+.FOREST-inlinewrap {
+  position: relative;
+}
+
+.FOREST-invalidcontainer {
+  float: right;
+  margin-top: 7px;
+  width: 180px;
+  height: 100%;
+}
+.FOREST-invalidwrap {
+  float: right;
+  text-align: right;
+  width: 90px;
+  padding: 3px 4px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+}
+.FOREST-invalidtext {
+  color: crimson;
+  vertical-align: middle;
+  height: 100%;
+  font-size: 16px;
+}
+.FOREST-invalidimg,
+.FOREST-validimg {
+  vertical-align: middle;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: crimson;
+}
+.FOREST-validcontainer {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  height: 100%;
+}
+.FOREST-inlineic {
+  margin-top: 0;
+}
+.FOREST-inlinevc {
+  right: 5px;
+}
+.FOREST-validwrap {
+  margin-top: -12px;
+}
+.FOREST-validimg {
+  background-color: green;
+}
+/******************************/
+/*********** basic ************/
+/******************************/
+#FOREST-base {
+  font-family: "Roboto Condensed", sans-serif;
+  max-width: 1060px;
+  margin: auto;
+  position: relative;
+  /* relative here will cause problem when modules merge */
+}
+#FOREST-curtain {
+  display: none;
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#FOREST-modal {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  background-color: #ddd;
+  /* margin: 0 7.5%; */
+  margin: 0 3.75%;
+  width: 65%;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+/***********************************/
+/************ structure ************/
+/***********************************/
+#FOREST-sidebar {
+  display: inline-block;
+  vertical-align: top;
+  background-color: #ddd;
+  width: 25%;
+  height: 100px;
+}
+#FOREST-itemImg {
+  width: 84%;
+  height: auto;
+  margin: 20px 8%;
+  border-radius: 5px;
+  background-color: white;
+}
+#FOREST-itemInfo {
+  font-family: sans-serif;
+  width: 84%;
+  margin: 0 8%;
+}
+#FOREST-massage {
+  clear: both;
+  background-color: white;
+  display: inline-block;
+  width: 75%;
+}
+.FOREST-container {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.FOREST-left,
+.FOREST-right {
+  display: inline-block;
+  width: 47%;
+  vertical-align: top;
+}
+.FOREST-right {
+  margin-left: 6%;
+}
+
+/*****************************/
+/*********** title ***********/
+/*****************************/
+#FOREST-header h3 {
+  font-family: "titles";
+  font-weight: lighter;
+  font-size: 22px;
+  margin: 15px 0 25px -5px;
+}
+/******************************/
+/*********** rating ***********/
+/******************************/
+#FOREST-rating h3,
+#FOREST-starcontainer,
+#FOREST-stars,
+#FOREST-rating p {
+  display: inline-block;
+  vertical-align: middle;
+}
+.FOREST-greystar,
+.FOREST-whitestar {
+  width: 30px;
+  height: auto;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.FOREST-greystar {
+  top: 3px;
+}
+#FOREST-rating h3 {
+  margin-right: 30px;
+}
+.FOREST-stars {
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #ccc;
+  border-right-width: 0;
+  border-bottom-color: #aaa;
+  background-color: #eee;
+}
+#FOREST-star1 {
+  border-radius: 4px 0 0 4px;
+}
+#FOREST-star5 {
+  border-right-width: 1px;
+  border-radius: 0 4px 4px 0;
+}
+#FOREST-rating p {
+  margin-left: 15px;
+  font-family: sans-serif;
+}
+/* #ratevalid,#wherevalid,#readvalid{
+  position: absolute;
+  top:50%;
+  right:20px;
+  height:100%;
+} */
+
+/******************************/
+/*********** review ***********/
+/******************************/
+#FOREST-reviewcontainer {
+  padding: 0;
+  line-height: 25px;
+}
+#FOREST-reviewarea,
+#FOREST-reviewarea:hover,
+#FOREST-reviewarea:focus {
+  border-width: 0;
+  border-radius: 5px 5px 0 0;
+  border-bottom-width: 1px;
+  border-color: #ccc;
+  margin: 0;
+}
+#FOREST-addp,
+#FOREST-addv {
+  display: inline-block;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 14px;
+  background-color: #eee;
+  margin: 5px -5px 10px 15px;
+  padding: 0 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  border-color: #ccc #ccc #999 #999;
+}
+/*****************************/
+/************ fit ************/
+/*****************************/
+.FOREST-inputcontainer {
+  display: inline-block;
+  margin: 0;
+  font-size: 40px;
+  height: 40px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-bottom-color: #aaa;
+  border-left-width: 0;
+  background-color: #eee;
+}
+#FOREST-fit1 {
+  border-left-width: 1px;
+  border-radius: 5px 0 0 5px;
+}
+#FOREST-fit5 {
+  border-radius: 0 5px 5px 0;
+}
+#FOREST-fit p {
+  display: inline-block;
+  font-family: sans-serif;
+}
+#FOREST-runlarge {
+  margin-left: 92px;
+}
+.FOREST-radio {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  margin: 15px 20px;
+  background-color: white;
+  box-shadow: inset 0 1px 2px black;
+}
+/******************************/
+/************ post ************/
+/******************************/
+#FOREST-post {
+  border-bottom: 0;
+}
+.FOREST-termcontainer {
+  display: inline-block;
+  vertical-align: top;
+}
+.FOREST-termcontent {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+input.FOREST-termcontent {
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  font-size: 20px;
+}
+label.FOREST-termcontent {
+  font-size: 13px;
+  color: crimson;
+}
+a.FOREST-termcontent {
+  font-size: 15px;
+}
+
+#FOREST-open {
+  padding: 13px;
+  font-size: 15px;
+  background-color: #426c90;
+  color: #F4F4F4;
+  border-radius: 3px;
+  border:none;
+  cursor: pointer;
+  background-image: linear-gradient(bottom, rgb(79,142,191) 0%, rgb(102,166,214) 100%);
+}
+
+#FOREST-postreview {
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+  font-size: 16px;
+  background-color: #4f7697;
+  margin-top: 20px;
+  padding: 11px 15px;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: inset 0 -20px 20px #426c90;
+
+}
+#FOREST-postreview:hover,
+#FOREST-open:hover {
+  background-color: #2b455c;
+  box-shadow: none;
+}
+/************************************/
+/************ overwrite *************/
+/************************************/
+.FOREST-explaination {
+  margin-top: 20px;
+  font-family: sans-serif;
+  font-size: 10px;
+}
+#FOREST-recyes,
+#FOREST-recno {
+  width: 25%;
+  height: 35px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-bottom-color: #999;
+  background-color: #eee;
+  color: #777;
+}
+/* #recyes:hover,#recno:hover{
+  border-color:#999;
+  background-color: #ddd;
+} */
+#FOREST-recyes {
+  border-right-width: 0;
+  border-radius: 4px 0 0 4px;
+  font-weight: bold;
+}
+#FOREST-recno {
+  border-radius: 0 4px 4px 0;
+}
+
+.FOREST-closecontainer {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+  background-color: #888;
+}
+.FOREST-closecontainer:hover,
+.FOREST-closecontainer:focus {
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #444;
+}
+
+#FOREST-emailvalidcontainer {
+  margin-top: 27px;
+}
