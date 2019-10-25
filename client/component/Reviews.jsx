@@ -139,7 +139,7 @@ class Reviews extends React.Component {
 
 
   getItemReviews(id){
-    axios.get(`/api/reviews/${id}`)
+    axios.get(`http://localhost:3002/api/reviews/${id}`)
     .then((results) => {
       this.setState({
         reviews: results.data,
@@ -154,7 +154,7 @@ class Reviews extends React.Component {
   }
 
   reviewImgClick(id){
-    axios.get(`/api/reviewImg/${id}`)
+    axios.get(`http://localhost:3002/api/reviewImg/${id}`)
     .then((results) => {
       this.setState({
         showModal: true,
@@ -183,7 +183,7 @@ class Reviews extends React.Component {
   }
 
   incrementHelpfulReviewsCount(index, id){
-    axios.get(`/api/helpfulReviews/${id}`)
+    axios.get(`http://localhost:3002/api/helpfulReviews/${id}`)
     .then((results) => {
       this.state.clickedHelpfulIndex.push(index);
       this.state.clickedUNhelfulIndex.push(index);
@@ -198,7 +198,7 @@ class Reviews extends React.Component {
   }
 
   incrementUNhelpfulReviewsCount(index, id){
-    axios.get(`/api/unhelpfulReviews/${id}`)
+    axios.get(`http://localhost:3002/api/unhelpfulReviews/${id}`)
     .then((results) => {
       this.state.clickedUNhelfulIndex.push(index);
       this.state.clickedHelpfulIndex.push(index);

@@ -3,8 +3,10 @@ const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
 const controller = require('./controller.js');
+const cors = require('cors');
 const port = 3002;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist')));
