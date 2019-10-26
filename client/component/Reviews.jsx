@@ -53,7 +53,8 @@ class Reviews extends React.Component {
 
 
   componentDidMount(){
-    this.getItemReviews(1);
+    var randomProductID = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    this.getItemReviews(randomProductID);
   }
 
   componentDidUpdate(prevProps) {
