@@ -126,6 +126,12 @@ class App extends React.Component{
   render(){
     return(
       <div id="body">
+       
+        <link rel="stylesheet" href="https://reibundles.s3-us-west-1.amazonaws.com/style.css"></link>
+        <link rel="stylesheet" href="https://reibundles.s3-us-west-1.amazonaws.com/modalStyle.css"></link>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"></link>
+
         <div className="title">
         <p>Reviews</p>
         </div>
