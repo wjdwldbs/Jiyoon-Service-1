@@ -3,7 +3,7 @@ import Reviews from './Reviews.jsx';
 import StarRatings from 'react-star-ratings';
 import ModalBox from './ModalBox.jsx';
 
-class App extends React.Component{
+class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -56,10 +56,10 @@ class App extends React.Component{
     }
   }
 
-    openModal(e){
-      e.preventDefault();
-      document.getElementById("FOREST-curtain").style.display = "block";
-      document.getElementById("FOREST-modal").style.display = "block";
+  openModal(e){
+    e.preventDefault();
+    document.getElementById("FOREST-curtain").style.display = "block";
+    document.getElementById("FOREST-modal").style.display = "block";
   }
 
   handleRatingBarClick(e){
@@ -178,8 +178,7 @@ class App extends React.Component{
           <Reviews currentBar={this.state.currentBar} getAverageRating={this.getAverageRating} getStars={this.getStars}/>
         </div>
         
-      </div>
-      
+      </div>   
     )
   }
 }

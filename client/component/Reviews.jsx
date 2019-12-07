@@ -239,7 +239,7 @@ class Reviews extends React.Component {
             </a>
             <span>Sort by:</span>
             <div className="dropdown">
-              <button className="dropbtn"><span id="currentSort">Most Relevant{`  `}</span>
+              <button className="dropbtn"><span id="currentSort">Most Relevant</span>
                 <i className="fa fa-caret-down"></i>
               </button>
               <div className="dropdown-content">

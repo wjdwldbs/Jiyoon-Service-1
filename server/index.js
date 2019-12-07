@@ -16,5 +16,4 @@ app.get('/api/reviewImg/:id', controller.getReviewImgInfo);
 app.get('/api/helpfulReviews/:id', controller.addHelpfulCount);
 app.get('/api/unhelpfulReviews/:id', controller.addUnhelpfulCount);
 
-
 app.listen(port, console.log(`listening on port ${port}`));

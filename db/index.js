@@ -4,11 +4,8 @@ mongoose.connect('mongodb://localhost/reis', { useNewUrlParser: true, useUnified
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  // we're connected!
   console.log('CONNECTED TO DATABASE!')
 });
-//fit: 1 to 5
-//stars: 1 to 5
 
 const reiSchema = mongoose.Schema({
   id: Number,
