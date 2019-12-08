@@ -7,6 +7,7 @@ Recreation of REI product detail page reviews module
 1. [Prerequisites](#prerequisites)
 2. [Installation & Setup](#installation)
 3. [Demo](#demo)
+4. [Related Projects](#related)
 
 ## Prerequisites <a name="prerequisites"></a>
 
@@ -37,3 +38,11 @@ $ npm start
 ## Demo <a name="demo"></a>
 
 [![demo](https://img.youtube.com/vi/_QLlZciTfBw/maxresdefault.jpg)](https://www.youtube.com/embed/_QLlZciTfBw)
+
+## Related Projects <a name="related"></a>
+
+• https://github.com/RealExpensiveItems/REI-module-Forest
+
+• https://github.com/RealExpensiveItems/ryansmodule
+
+• https://github.com/RealExpensiveItems/Daylan-Service
