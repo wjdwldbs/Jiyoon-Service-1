@@ -2,11 +2,17 @@
 
 Recreation of REI product detail page reviews module
 
-## Prerequisites
+## Table of Contents
+
+1. [Prerequisites](#prerequisites)
+2. [Installation & Setup](#installation)
+3. [Demo](#demo)
+
+## Prerequisites <a name="prerequisites"></a>
 
 You will need [Node.js](https://nodejs.org/en/) version 8.0 or greater installed on your system.
 
-## Installation & Setup
+## Installation & Setup <a name="installation"></a>
 
 Get the code by cloning this repository using git
 
@@ -28,6 +34,8 @@ $ npm run build
 $ npm start
 ```
 
-## Demo
+## Demo <a name="demo"></a>
 
-[![demo](https://img.youtube.com/vi/_QLlZciTfBw/maxresdefault.jpg)](https://youtu.be/_QLlZciTfBw)
+<video width="320" height="240" controls>
+  <source src="https://youtu.be/_QLlZciTfBw" type="video/mp4">
+</video>
