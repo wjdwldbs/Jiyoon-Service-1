@@ -1,6 +1,6 @@
 # REI Front-End Clone
 
-Recreation of REI product detail page reviews module
+Re-creation of REI product detail page reviews module
 
 ## Table of Contents
 
