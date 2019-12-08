@@ -30,6 +30,4 @@ $ npm start
 
 ## Demo
 
-<video width="320" height="240" autoplay>
-  <source src="https://youtu.be/_QLlZciTfBw" type="video/mp4">
-</video>
+[![demo](https://img.youtube.com/vi/_QLlZciTfBw/maxresdefault.jpg)](https://youtu.be/_QLlZciTfBw)
