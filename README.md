@@ -41,6 +41,8 @@ $ npm start
 
 ## Related Projects <a name="related"></a>
 
+• https://github.com/RealExpensiveItems/navbar
+
 • https://github.com/RealExpensiveItems/REI-module-Forest
 
 • https://github.com/RealExpensiveItems/ryansmodule
