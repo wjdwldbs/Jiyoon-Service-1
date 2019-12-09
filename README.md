@@ -4,12 +4,12 @@ Re-creation of REI product detail page reviews module
 
 ## Table of Contents
 
-1. [Prerequisites](#prerequisites)
+1. [Requirements](#requirements)
 2. [Installation & Setup](#installation)
 3. [Demo](#demo)
 4. [Related Projects](#related)
 
-## Prerequisites <a name="prerequisites"></a>
+## Requirements <a name="requirements"></a>
 
 You will need [Node.js](https://nodejs.org/en/) version 8.0 or greater installed on your system.
 
