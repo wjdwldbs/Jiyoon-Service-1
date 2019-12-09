@@ -4,10 +4,14 @@ Re-creation of REI product detail page reviews module
 
 ## Table of Contents
 
-1. [Requirements](#requirements)
-2. [Installation & Setup](#installation)
-3. [Demo](#demo)
+1. [Demo](#demo)
+2. [Requirements](#requirements)
+3. [Installation & Setup](#installation)
 4. [Related Projects](#related)
+
+## Demo <a name="demo"></a>
+
+[![demo](https://img.youtube.com/vi/_QLlZciTfBw/maxresdefault.jpg)](https://www.youtube.com/embed/_QLlZciTfBw)
 
 ## Requirements <a name="requirements"></a>
 
@@ -34,10 +38,6 @@ $ npm run seed
 $ npm run build
 $ npm start
 ```
-
-## Demo <a name="demo"></a>
-
-[![demo](https://img.youtube.com/vi/_QLlZciTfBw/maxresdefault.jpg)](https://www.youtube.com/embed/_QLlZciTfBw)
 
 ## Related Projects <a name="related"></a>
 
