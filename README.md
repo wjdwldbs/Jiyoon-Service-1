@@ -19,10 +19,10 @@ You will need [Node.js](https://nodejs.org/en/) version 8.0 or greater installed
 
 ## Installation & Setup <a name="installation"></a>
 
-Get the code by cloning this repository using git
+Get the code by cloning this repository using git:
 
 ```bash
-git clone https://github.com/wjdwldbs/Jiyoon_REI_reviews_component.git
+$ git clone https://github.com/wjdwldbs/Jiyoon_REI_reviews_component.git
 ```
 
 Once cloned, open the terminal in the project directory and install dependencies locally using npm:
